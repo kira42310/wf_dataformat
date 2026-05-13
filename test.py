@@ -8,23 +8,12 @@ import script.adapter_pickle
 import pandas as pd
 import numpy as np
 
-data_dir = ""
+data_dir = "data/"
 
 report = []
 
 try:
   data = script.adapter_csv.read_to_list_exper( data_dir + 'test_noh.csv'  )
-  print( data )
-  report.append( 1 )
-except Exception as e:
-  print( e )
-  report.append( e )
-del( data )
-
-########################################
-
-try:
-  data = script.adapter_csv.read_to_list_exper( data_dir + 'test_noh.csv.zst', compression = True )
   print( data )
   report.append( 1 )
 except Exception as e:
@@ -44,6 +33,20 @@ except Exception as e:
 
 try:
   script.adapter_csv.list_to_csv( data, data_dir + 'test_noh_.csv.zst', compression = True )
+  report.append( 1 )
+except Exception as e:
+  print( e )
+  report.append( e )
+
+########################################
+
+del( data )
+
+########################################
+
+try:
+  data = script.adapter_csv.read_to_list_exper( data_dir + 'test_noh_.csv.zst', compression = True )
+  print( data )
   report.append( 1 )
 except Exception as e:
   print( e )

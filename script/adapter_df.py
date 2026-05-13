@@ -7,9 +7,9 @@ def to_raw_csv( df, filename, index = False, compression = False ):
   else:
     df.to_csv( filename, index = index )
 
-def to_hdf( df, filename, key, compression = False, complib = 'blosc:zstd', complevel = 6 ):
+def to_hdf( df, filename, key, compression = False, complib = 'blosc:zstd', complevel = 5 ):
   if compression:
-    df.to_hdf( filename, key = key, complib = complib, complevel = complevel )
+    df.to_hdf( filename, key = key, complib = complib, complevel = complevel, format = 'table' )
   else:
     df.to_hdf( filename, key = key )
 
