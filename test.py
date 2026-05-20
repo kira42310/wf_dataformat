@@ -14,11 +14,12 @@ report = []
 
 try:
   data = script.adapter_csv.read_to_list_exper( data_dir + 'test_noh.csv'  )
-  print( data )
+  #print( data )
   report.append( 1 )
 except Exception as e:
   print( e )
   report.append( e )
+print( report )
 
 ########################################
 
@@ -28,6 +29,7 @@ try:
 except Exception as e:
   print( e )
   report.append( e )
+print( report )
 
 ########################################
 
@@ -37,6 +39,7 @@ try:
 except Exception as e:
   print( e )
   report.append( e )
+print( report )
 
 ########################################
 
@@ -46,15 +49,17 @@ del( data )
 
 try:
   data = script.adapter_csv.read_to_list_exper( data_dir + 'test_noh_.csv.zst', compression = True )
-  print( data )
+  #print( data )
   report.append( 1 )
 except Exception as e:
   print( e )
   report.append( e )
+print( report )
 
 ########################################
 
 df = pd.DataFrame( data )
+#df = script.adapter_df.read_csv( data_dir + 'test_df_noh_.csv' )
 
 ########################################
 
@@ -64,6 +69,7 @@ try:
 except Exception as e:
   print( e )
   report.append( e )
+print( report )
 
 ########################################
 
@@ -73,8 +79,9 @@ try:
 except Exception as e:
   print( e )
   report.append( e )
+print( report )
 
-########################################
+#######################################
 
 try:
   script.adapter_df.to_hdf( df, data_dir + 'test_df_noh_.h5', 'noh' )
@@ -82,15 +89,18 @@ try:
 except Exception as e:
   print( e )
   report.append( e )
+print( report )
 
 ########################################
 
+# Failed
 try:
   script.adapter_df.to_hdf( df, data_dir + 'test_df_noh_.h5.zst', 'noh', compression = True, complevel = 5 )
   report.append( 1 )
 except Exception as e:
   print( e )
   report.append( e )
+print( report )
 
 ########################################
 
@@ -100,6 +110,7 @@ try:
 except Exception as e:
   print( e )
   report.append( e )
+print( report )
 
 ########################################
 
@@ -109,6 +120,7 @@ try:
 except Exception as e:
   print( e )
   report.append( e )
+print( report )
 
 ########################################
 
@@ -118,11 +130,12 @@ del( df )
 
 try:
   df = script.adapter_df.read_csv( data_dir + 'test_noh_.csv' )
-  print( df )
+  #print( df )
   report.append( 1 )
 except Exception as e:
   print( e )
   report.append( e )
+print( report )
 
 ########################################
 
@@ -132,11 +145,12 @@ del( df )
 
 try:
   df = script.adapter_df.read_csv( data_dir + 'test_df_noh_.csv' )
-  print( df )
+  #print( df )
   report.append( 1 )
 except Exception as e:
   print( e )
   report.append( e )
+print( report )
 
 ########################################
 
@@ -146,11 +160,12 @@ del( df )
 
 try:
   df = script.adapter_df.read_csv( data_dir + 'test_df_noh_.csv.zst' )
-  print( df )
+  #print( df )
   report.append( 1 )
 except Exception as e:
   print( e )
   report.append( e )
+print( report )
 
 ########################################
 
@@ -160,11 +175,12 @@ del( df )
 
 try:
   df = script.adapter_df.read_hdf( data_dir + 'test_df_noh_.h5', 'noh' )
-  print( df )
+  #print( df )
   report.append( 1 )
 except Exception as e:
   print( e )
   report.append( e )
+print( report )
 
 ########################################
 
@@ -172,13 +188,15 @@ del( df )
 
 ########################################
 
+# Failed: write function failed
 try:
   df = script.adapter_df.read_hdf( data_dir + 'test_df_noh_.h5.zst', 'noh' )
-  print( df )
+  #print( df )
   report.append( 1 )
 except Exception as e:
   print( e )
   report.append( e )
+print( report )
 
 ########################################
 
@@ -188,11 +206,12 @@ del( df )
 
 try:
   df = script.adapter_df.read_pkl( data_dir + 'test_df_noh_.pkl' )
-  print( df )
+  #print( df )
   report.append( 1 )
 except Exception as e:
   print( e )
   report.append( e )
+print( report )
 
 ########################################
 
@@ -202,14 +221,16 @@ del( df )
 
 try:
   df = script.adapter_df.read_pkl( data_dir + 'test_df_noh_.pkl.zst' )
-  print( df )
+  #print( df )
   report.append( 1 )
 except Exception as e:
   print( e )
   report.append( e )
+print( report )
 
 ########################################
 
+#data = df.values.tolist()
 del( df )
 
 ########################################
@@ -220,6 +241,7 @@ try:
 except Exception as e:
   print( e )
   report.append( e )
+print( report )
 
 ########################################
 
@@ -229,16 +251,18 @@ try:
 except Exception as e:
   print( e )
   report.append( e )
+print( report )
 
 ########################################
 
 try:
   tmp = script.adapter_hdf5.read_to_list( data_dir + 'test_noh_.h5', 'noh' )
-  print( tmp )
+  #print( tmp )
   report.append( 1 )
 except Exception as e:
   print( e )
   report.append( e )
+print( report )
 
 ########################################
 
@@ -248,102 +272,112 @@ del( tmp )
 
 try:
   tmp = script.adapter_hdf5.read_to_list( data_dir + 'test_noh_.h5.zst', 'noh' )
-  print( tmp )
+  #print( tmp )
   report.append( 1 )
 except Exception as e:
   print( e )
   report.append( e )
+print( report )
 
 ########################################
 
 del( tmp )
+#data = script.adapter_csv.read_to_list_exper( data_dir + 'test_noh.csv'  )
 
-########################################
-
-try:
-  script.adapter_netcdf.listmcol_to_netCDF4( data, data_dir + 'test_noh_.nc' )
-  report.append( 1 )
-except Exception as e:
-  print( e )
-  report.append( e )
-
-########################################
-
+# #######################################
+# 
+# # Failed
 # try:
-#   script.adapter_netcdf.listmcol_to_netCDF4( data, data_dir + 'test_noh_.nc.zst', compression = True )
+#   script.adapter_netcdf.listmcol_to_netCDF4( data, data_dir + 'test_noh_.nc' )
 #   report.append( 1 )
 # except Exception as e:
 #   print( e )
 #   report.append( e )
-
-########################################
-
+# print( report )
+# 
+# #######################################
+# 
+# # try:
+# #   script.adapter_netcdf.listmcol_to_netCDF4( data, data_dir + 'test_noh_.nc.zst', compression = True )
+# #   report.append( 1 )
+# # except Exception as e:
+# #   print( e )
+# #   report.append( e )
+# 
+# ########################################
+# 
 np_data = np.array( data, dtype = str )
-
-########################################
-
-try:
-  script.adapter_netcdf.npmcol_to_netCDF4( np_data, data_dir + 'test_np_noh_.nc' )
-  report.append( 1 )
-except Exception as e:
-  print( e )
-  report.append( e )
-
-########################################
-
-# try:
-#   script.adapter_netcdf.npmcol_to_netCDF4( np_data, data_dir + 'test_np_noh_.nc', compression = True )
-#   report.append( 1 )
-# except Exception as e:
-#   print( e )
-#   report.append( e )
-
-########################################
-
-
-########################################
-
-try:
-  tmp = script.adapter_netcdf.read_to_list( data_dir + 'test_noh_.nc' )
-  print( tmp )
-  report.append( 1 )
-except Exception as e:
-  print( e )
-  report.append( e )
-
-########################################
-
-del( tmp )
-
-########################################
-
-# try:
-#   tmp = script.adapter_netcdf.read_to_list( data_dir + 'test_noh_.nc', compression = True )
-#   print( tmp )
-#   report.append( 1 )
-# except Exception as e:
-#   print( e )
-#   report.append( e )
-
+# 
 # ########################################
-
+# 
+# # Failed
+# try:
+#   script.adapter_netcdf.npmcol_to_netCDF4( np_data, data_dir + 'test_np_noh_.nc' )
+#   report.append( 1 )
+# except Exception as e:
+#   print( e )
+#   report.append( e )
+# print( report )
+# 
+# #######################################
+# 
+# # try:
+# #   script.adapter_netcdf.npmcol_to_netCDF4( np_data, data_dir + 'test_np_noh_.nc', compression = True )
+# #   report.append( 1 )
+# # except Exception as e:
+# #   print( e )
+# #   report.append( e )
+# 
+# ########################################
+# 
+# 
+# ########################################
+# 
+# # Failed
+# try:
+#   tmp = script.adapter_netcdf.read_to_list( data_dir + 'test_noh_.nc' )
+#   #print( tmp )
+#   report.append( 1 )
+# except Exception as e:
+#   print( e )
+#   report.append( e )
+# print( report )
+# 
+# #######################################
+# 
 # del( tmp )
-
+# 
+# #######################################
+# 
+# # try:
+# #   tmp = script.adapter_netcdf.read_to_list( data_dir + 'test_noh_.nc', compression = True )
+# #   print( tmp )
+# #   report.append( 1 )
+# # except Exception as e:
+# #   print( e )
+# #   report.append( e )
+# 
+# # ########################################
+# 
+# # del( tmp )
+# 
+# # ########################################
+# 
+# # Failed
+# try:
+#   tmp = script.adapter_netcdf.read_to_np( data_dir + 'test_np_noh_.nc' )
+#   #print( tmp )
+#   report.append( 1 )
+# except Exception as e:
+#   print( e )
+#   report.append( e )
+# print( report )
+# 
 # ########################################
-
-try:
-  tmp = script.adapter_netcdf.read_to_np( data_dir + 'test_np_noh_.nc' )
-  print( tmp )
-  report.append( 1 )
-except Exception as e:
-  print( e )
-  report.append( e )
-
-########################################
-
-del( tmp )
-
-########################################
+# 
+# del( tmp )
+# 
+# ########################################
 
 # try:
 #   tmp = script.adapter_netcdf.read_to_np( data_dir + 'test_np_noh_.nc', compression = True )
@@ -365,6 +399,7 @@ try:
 except Exception as e:
   print( e )
   report.append( e )
+print( report )
 
 ########################################
 
@@ -374,16 +409,18 @@ try:
 except Exception as e:
   print( e )
   report.append( e )
+print( report )
 
 ########################################
 
 try:
   tmp = script.adapter_np.read( data_dir + 'test_np_noh_.csv' )
-  print( tmp )
+  #print( tmp )
   report.append( 1 )
 except Exception as e:
   print( e )
   report.append( e )
+print( report )
 
 ########################################
 
@@ -393,11 +430,12 @@ del( tmp )
 
 try:
   tmp = script.adapter_np.read( data_dir + 'test_np_noh_.csv.zst', compression = True )
-  print( tmp )
+  #print( tmp )
   report.append( 1 )
 except Exception as e:
   print( e )
   report.append( e )
+print( report )
 
 ########################################
 
@@ -411,6 +449,7 @@ try:
 except Exception as e:
   print( e )
   report.append( e )
+print( report )
 
 ########################################
 
@@ -420,16 +459,18 @@ try:
 except Exception as e:
   print( e )
   report.append( e )
+print( report )
 
 ########################################
 
 try:
   tmp = script.adapter_pickle.read( data_dir + 'test_noh_.pkl' )
-  print( tmp )
+  #print( tmp )
   report.append( 1 )
 except Exception as e:
   print( e )
   report.append( e )
+print( report )
 
 ########################################
 
@@ -439,11 +480,12 @@ except Exception as e:
 
 try:
   tmp = script.adapter_pickle.read( data_dir + 'test_noh_.pkl.zst', compression = True )
-  print( tmp )
+  #print( tmp )
   report.append( 1 )
 except Exception as e:
   print( e )
   report.append( e )
+print( report )
 
 ########################################
 
